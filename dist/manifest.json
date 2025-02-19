@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "QRPrint",
+    "version": "1",
+    "description": "Detects and prints QR-codes",
+    "minimum_chrome_version": "125",
+    "icons": {
+        "16": "qrprint.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "Print",
+        "default_icon": "qrprint.png"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": []
+}
