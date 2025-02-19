@@ -36,18 +36,18 @@ async function printerInjection(dataUrl: string, width: string, height: string) 
     <html>
     <head>
     <style>    
-    body {
-        background-image: url("${dataUrl}");
-        background-size: contain;
-        background-repeat: no-repeat;
+    html, body, img {
+        border: 0;
         height: ${height};
         margin: 0;
         overflow: hidden;
+        padding: 0;
         width: ${width};
     }
     </style>
     </head>
     <body>
+    <img src="${dataUrl}"/>
     </body>
     </html>
     `;
