@@ -1,6 +1,4 @@
-import { ContentInjector } from "./contentInjector";
 import { encodeCanvasImage } from "./image";
-
 
 export type HighlighterOptions = Readonly<{
     position: { top: number, left: number },
@@ -10,15 +8,9 @@ export type HighlighterOptions = Readonly<{
 
 export class Highlighter {
 
-    readonly contentInjector: ContentInjector;
-
-    constructor(contentInjector: ContentInjector) {
-        this.contentInjector = contentInjector;
-    }
-
     async highlightCanvas(canvas: OffscreenCanvas, options: HighlighterOptions) {
         const dataUrl = await encodeCanvasImage(canvas);
-        await this.contentInjector.inject(highligherInjection, dataUrl, canvas.width, canvas.height, options);
+        await highlight(dataUrl, canvas.width, canvas.height, options);
     }
 
     async highligtSolid(color: string, size: { width: number, height: number }, options: HighlighterOptions) {
@@ -35,7 +27,7 @@ export class Highlighter {
 }
 
 
-async function highligherInjection(dataUrl: string, width: number, height: number, options: HighlighterOptions) {
+async function highlight(dataUrl: string, width: number, height: number, options: HighlighterOptions) {
     const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
     const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
 

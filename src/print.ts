@@ -1,18 +1,4 @@
-import { ContentInjector } from "./contentInjector";
-
-export class Printer {
-    readonly injector: ContentInjector;
-
-    constructor(injector: ContentInjector) {
-        this.injector = injector;
-    }
-
-    async print(dataUrl: string, width: string, height: string) {
-        await this.injector.inject(printerInjection, dataUrl, width, height);
-    }
-}
-
-async function printerInjection(dataUrl: string, width: string, height: string) {
+export async function print(dataUrl: string, width: string, height: string) {
     const frame = document.createElement("iframe");
     const { style } = frame;
     style.display = "hidden";
