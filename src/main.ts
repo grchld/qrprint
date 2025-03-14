@@ -30,7 +30,7 @@ function highlightQRs(qrs: ReadonlyArray<QR>): void {
 }
 
 async function printQR(modules: QR['modules']) {
-    const canvas = new OffscreenCanvas(192, 192);
+    const canvas = new OffscreenCanvas(448, 448);
     drawQR(modules, canvas);
     const data = await encodeCanvasImage(canvas);
 
