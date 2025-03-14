@@ -244,6 +244,8 @@ export function drawQR(modules: Modules, canvas: OffscreenCanvas) {
     if (!context) {
         throw new Error("No 2d context for QR?");
     }
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     const size = Math.floor(Math.min(canvas.width, canvas.height) / len);
     const px = Math.floor((canvas.width - size * len) / 2);
     const py = Math.floor((canvas.height - size * len) / 2);

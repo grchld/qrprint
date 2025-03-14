@@ -1,4 +1,5 @@
 import { encodeCanvasImage } from "./image";
+import { delay, nextFrame } from "./timeouts";
 
 export type HighlighterOptions = Readonly<{
     position: { top: number, left: number },
@@ -28,9 +29,6 @@ export class Highlighter {
 
 
 async function highlight(dataUrl: string, width: number, height: number, options: HighlighterOptions) {
-    const delay = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
-    const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
-
     const { top, left } = options.position;
     const timeout = options.timeout ?? 3000;
     const img = document.createElement('img');
